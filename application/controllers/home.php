@@ -5,14 +5,15 @@ class Home extends CI_Controller {
     } 
 	function index()
 	{
-		$data = $this->session->userdata('loginData');
-		if($data){
-			$this->load->view('home',$data);
-		}else{
+		
+						$data['Brand']=$this->Brand->showAllbrand();
+			
+		
 			$data['emUsername']="";
 			$data['emStatus']="";
+
 			$this->load->view('home',$data);
-		}
+		
 		
 		
 	}

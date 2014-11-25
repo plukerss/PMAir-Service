@@ -20,7 +20,7 @@
       <?php
 	  foreach($brand as $b){
 	  ?>
-      <option value="<?php echo $b['brandName'];?>"><?php echo $b['brandName'];?></option>
+      <option value="<?php echo $b['brandId'];?>"><?php echo $b['brandName'];?></option>
        <?php
 	  }
 	  ?>

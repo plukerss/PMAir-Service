@@ -38,13 +38,15 @@ function add()
 			$airDetail = $this->input->post('airDetail');
 			$airBrand = $this->input->post('airBrand');
 			$airBtu = $this->input->post('airBtu');
+			$airBrand = $this->input->post('airBrand');
 			
-			var_dump('post');
+			
 			$this->Aircondition->setairBtu($airBtu);
 			$this->Aircondition->setairBrand($airBrand);
 			$this->Aircondition->setairDetail($airDetail);
 			$this->Aircondition->setairPic($airPic);
-			$this->Aircondition->setairModel($airModel);		
+			$this->Aircondition->setairModel($airModel);
+			$this->Aircondition->setairBrand($airBrand);		
 			$id=$this->Aircondition->add();
 			
 				header('Location: '.base_url().'index.php/home');
@@ -92,6 +94,9 @@ function upDate($airId){
 	{    
 		$this->Aircondition->delete($airId);
 		echo "OK";
+	}
+	function calAir(){
+		$this->load->view('calAir');
 	}
 
 }

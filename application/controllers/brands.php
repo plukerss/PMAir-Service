@@ -65,5 +65,11 @@ function upDate($brandId){
 		$this->Brand->delete($brandId);
 		echo "OK";
 	}
+	function getBrand($brandname)
+	{
+		$this->Brand->setBrandName($brandname);
+		$data['showAll'] = $this->Brand->getairbybrand();
+		$this->load->view('showairbybrand',$data);
+		}
 }
 ?>

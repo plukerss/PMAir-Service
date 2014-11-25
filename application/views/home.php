@@ -21,10 +21,11 @@
 	    </script>
     <style type="text/css">
 	.logo{
-		position:fixed;
-		z-index:1;
+	
+		display:inline;
+		z-index:1000;
 		height:100px;
-		margin-left:37%;
+		
 	}
 .header {
 	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
@@ -57,12 +58,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff6600', end
 .load{
 	width:60%;
 	margin-left:20%;
-	margin-top:20px;
+	margin-top:50px;
 	background-color:#D7D7D7;
 	border-radius:5px;
 	box-shadow:0px 0px 1px 1px #525252;
 	min-height:400px;
-	position:fixed;
+	position:static;
+	
 	
 }
 .loginer{
@@ -80,8 +82,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff6600', end
 </head>
 
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<input class="logo" type="image" src="../../img/qqqq.png">
-<header class="header"></header>
+
+<header class="header"><input class="logo" type="image" src="../../img/qqqq.png"></header>
 
 <div class="menu">
   <!-- AJXFILE:ajxmenu.css -->
@@ -100,9 +102,7 @@ if($emUsername!=""){
  echo 'สวัสดีคุณ : '.$emUsername;?><br><?php echo 'สถานะ : '.$emStatus;?><br><a href="<?php echo base_url();
 
  ?>index.php/home/logout">logout</a><?php } ?></div>
-<div class="load">
-</div>
-<div class="wrapper">
+ <div class="wrapper">
   <nav class="vertical">
     <ul>
       <li>
@@ -110,24 +110,22 @@ if($emUsername!=""){
         <input type="radio" name="verticalMenu" id="home" />
         <div>
           <ul>
-            <li><a href="<?php echo base_url();?>index.php/home/Mitsu" class="submenu" title="home">Mitsubishi</a></li>
-            <li><a href="<?php echo base_url();?>index.php/home/Samsung" class="submenu">Samsung</a></li>
-            <li><a href="<?php echo base_url();?>index.php/home/LG" class="submenu">LG</a></li>
-            <li><a href="<?php echo base_url();?>index.php/home/Hitachi" class="submenu">Hitachi</a></li>
-             <li><a href="<?php echo base_url();?>index.php/home/Saijodenki" class="submenu">Saijodenki</a></li>
-              <li><a href="<?php echo base_url();?>index.php/home/Dikin" class="submenu">Dikin</a></li>
+          <?php foreach($Brand as $b){ ?>
+           <li>
+           <a href="<?php echo base_url();?>index.php/brands/getBrand/<?php echo $b['brandName'];?>" class="submenu" title="home"><?php echo $b['brandName'];?></a>
+           </li>   
+            <?php }?>
           </ul>
           
         </div>
       </li>
       <li>
-        <label for="blog">Blog</label>
+        <label for="blog">บริการ</label>
         <input type="radio" name="verticalMenu" id="blog" />
         <div>
           <ul>
-            <li><a href="#">จัดการข้อมูล</a></li>
-            <li><a href="#">Inspiration</a></li>
-            <li><a href="#">Tutorials</a></li>
+            <li><a href="<?php echo base_url();?>index.php/airconditions/calAir" class="submenu">คำนวนขนาดห้อง</a></li>
+            <li><a href="#">คำนวนค่าไฟ</a></li>
           </ul>
         </div>
       </li>
@@ -149,5 +147,8 @@ if($emUsername!=""){
     </ul>
   </nav>
 </div>
+<div class="load">
+</div>
+
 </body>
 </html>

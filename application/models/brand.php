@@ -67,6 +67,13 @@ function add()
 		echo "FAIL";
 		}
 	}
+	function getairbybrand()
+	{	$this->db->join('brand','brand.brandId = aircondition.brandId');
+		$this->db->where('brand.brandName',$this->getBrandName());
+		$query = $this->db->get('aircondition')->result_array();
+		return $query;
+		}
+	
 
 }
 ?>

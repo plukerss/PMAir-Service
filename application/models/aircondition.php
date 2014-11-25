@@ -103,7 +103,7 @@ function add()
 		'airModel'=> $this->getairModel(),
 		'airPic'=> $this->getairPic(),
 		'airDetail'=> $this->getairDetail(),
-		'airBrand'=> $this->getairBrand(),
+		'brandId'=> $this->getairBrand(),
 		'airBtu'=> $this->getairBtu(),
 		);
 		
@@ -128,6 +128,7 @@ function searchData(){
 
 function findByAll()
 	{
+		$this->db->join('brand','brand.brandId = aircondition.brandId');
 		$query = $this->db->get('aircondition')->result_array();
 		return $query;
 	}
@@ -140,6 +141,7 @@ function findByAll()
 	
 function getPK()
 	{
+		$this->db->join('brand','brand.brandId = aircondition.brandId');
 		$this->db->where('aircondition.airId',$this->getairId());
 		$query = $this->db->get('aircondition')->result_array();
 		return $query;
@@ -147,16 +149,15 @@ function getPK()
 	}
 	function findByKeyword($field, $value)
 	{
-
-		$this->db->like($field, $value);	
-		
+		$this->db->join('brand','brand.brandId = aircondition.brandId');
+		$this->db->like($field, $value);
 		$query = $this->db->get('aircondition')->result_array();
 
 		return $query;
 	}
 	
 	function updateair($airId)
-	{
+	{	$this->db->join('brand','brand.brandId = aircondition.brandId');
 		$this->db->where('aircondition.airId', $airId);
 		$query = $this->db->get('aircondition')->result_array();
 		return $query;
@@ -168,7 +169,7 @@ function getPK()
 					   'airModel' 		=> $this->getairModel(),
 					   'airPic' 		=> $this->getairPic(),
 					   'airDetail' 		=> $this->getairDetail(),
-					   'airBrand' 		=> $this->getairBrand(),
+					   'brandId' 		=> $this->getairBrand(),
 					   'airBtu' 		=> $this->getairBtu(),
 					  
 					   
@@ -177,6 +178,7 @@ function getPK()
 			$this->db->update('aircondition',$data);
 	}
 	function showAllData(){
+		$this->db->join('brand','brand.brandId = aircondition.brandId');
 		$query = $this->db->get('aircondition')->result_array();
 		return $query;
 	}
